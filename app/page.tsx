@@ -14,6 +14,47 @@ const HomePage = () => {
     (product) => product.category === activeCategory
   );
 
+  // Swipe Navigation Logic
+  const touchStartRef = useRef<{ x: number, y: number } | null>(null);
+  const minSwipeDistance = 50;
+  const categories = ["WOMEN", "MEN", "KIDS"];
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartRef.current = {
+      x: e.targetTouches[0].clientX,
+      y: e.targetTouches[0].clientY
+    };
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartRef.current) return;
+
+    const touchEnd = {
+      x: e.changedTouches[0].clientX,
+      y: e.changedTouches[0].clientY
+    };
+
+    const distanceX = touchStartRef.current.x - touchEnd.x;
+    const distanceY = touchStartRef.current.y - touchEnd.y;
+    const isHorizontalSwipe = Math.abs(distanceX) > Math.abs(distanceY);
+
+    if (isHorizontalSwipe && Math.abs(distanceX) > minSwipeDistance) {
+      const currentIndex = categories.indexOf(activeCategory);
+
+      if (distanceX > 0) {
+        // Swipe Left (Finger Right -> Left) -> Next Category
+        if (currentIndex < categories.length - 1) {
+          setActiveCategory(categories[currentIndex + 1]);
+        }
+      } else {
+        // Swipe Right (Finger Left -> Right) -> Prev Category
+        if (currentIndex > 0) {
+          setActiveCategory(categories[currentIndex - 1]);
+        }
+      }
+    }
+  };
+
   // Create looped product array: [last, ...originals, first]
   const loopedProducts = [
     filteredProducts[filteredProducts.length - 1],
@@ -76,7 +117,11 @@ const HomePage = () => {
   }, [activeCategory, filteredProducts.length]);
 
   return (
-    <div className="relative h-[100dvh] w-full bg-black text-white font-sans overflow-hidden">
+    <div
+      className="relative h-[100dvh] w-full bg-black text-white font-sans overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
 
       {/* Top Header - Floating */}
       <div className="absolute top-0 left-0 w-full z-50 flex flex-col items-center pt-4 pb-8 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
