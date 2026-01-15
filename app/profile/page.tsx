@@ -11,9 +11,15 @@ const ProfilePage = () => {
             <div className="flex w-full bg-white z-50 pt-4 pb-6 px-6 items-center justify-between shadow-sm">
                 <span className=" font-medium text-gray-800">Membership</span>
                 <div className="flex gap-5">
-                    <Bell className="w-5 h-5 text-neutral-700 cursor-pointer hover:opacity-60 transition" />
-                    <Heart className="w-5 h-5 text-neutral-700 cursor-pointer hover:opacity-60 transition" />
-                    <ShoppingCart className="w-5 h-5 text-neutral-700 cursor-pointer hover:opacity-60 transition" />
+                    <Link href="/notification">
+                        <Bell className="w-5 h-5 text-neutral-700 cursor-pointer hover:opacity-60 transition" />
+                    </Link>
+                    <Link href="/wishlist">
+                        <Heart className="w-5 h-5 text-neutral-700 cursor-pointer hover:opacity-60 transition" />
+                    </Link>
+                    <Link href="/cart">
+                        <ShoppingCart className="w-5 h-5 text-neutral-700 cursor-pointer hover:opacity-60 transition" />
+                    </Link>
                 </div>
             </div>
 

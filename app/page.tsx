@@ -78,9 +78,15 @@ const HomePage = () => {
           </Link>
 
           <div className="flex gap-5">
-            <Bell className="w-5 h-5 text-white drop-shadow-md cursor-pointer hover:opacity-80 transition" />
-            <Heart className="w-5 h-5 text-white drop-shadow-md cursor-pointer hover:opacity-80 transition" />
-            <ShoppingCart className="w-5 h-5 text-white drop-shadow-md cursor-pointer hover:opacity-80 transition" />
+            <Link href="/notification">
+              <Bell className="w-5 h-5 text-white drop-shadow-md cursor-pointer hover:opacity-80 transition" />
+            </Link>
+            <Link href="/wishlist">
+              <Heart className="w-5 h-5 text-white drop-shadow-md cursor-pointer hover:opacity-80 transition" />
+            </Link>
+            <Link href="/cart">
+              <ShoppingCart className="w-5 h-5 text-white drop-shadow-md cursor-pointer hover:opacity-80 transition" />
+            </Link>
           </div>
         </div>
 

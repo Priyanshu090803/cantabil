@@ -20,9 +20,15 @@ const SearchPage = () => {
                     </Link>
 
                     <div className="flex gap-5">
-                        <Bell className="w-5 h-5 text-black cursor-pointer hover:opacity-60 transition" />
-                        <Heart className="w-5 h-5 text-black cursor-pointer hover:opacity-60 transition" />
-                        <ShoppingCart className="w-5 h-5 text-black cursor-pointer hover:opacity-60 transition" />
+                        <Link href="/notification">
+                            <Bell className="w-5 h-5 text-black cursor-pointer hover:opacity-60 transition" />
+                        </Link>
+                        <Link href="/wishlist">
+                            <Heart className="w-5 h-5 text-black cursor-pointer hover:opacity-60 transition" />
+                        </Link>
+                        <Link href="/cart">
+                            <ShoppingCart className="w-5 h-5 text-black cursor-pointer hover:opacity-60 transition" />
+                        </Link>
                     </div>
                 </div>
 
