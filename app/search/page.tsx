@@ -9,10 +9,10 @@ const SearchPage = () => {
     const [activeTab, setActiveTab] = useState<keyof typeof SEARCH_DATA>("WOMEN");
 
     return (
-        <div className="relative h-screen w-full bg-white text-black font-sans overflow-hidden flex flex-col">
+        <div className="relative h-[100dvh] w-full bg-white text-black font-sans overflow-hidden flex flex-col">
 
             {/* Top Header */}
-            <div className="flex flex-col w-full bg-white z-50 pt-4 pb-2">
+            <div className="flex flex-col w-full bg-white z-50 pt-4 pb-2 shrink-0">
                 {/* Icons Row */}
                 <div className="w-full flex justify-between px-6 mb-4 pointer-events-auto items-center">
                     <Link href="/">

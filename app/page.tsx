@@ -25,8 +25,11 @@ const HomePage = () => {
     if (!scrollRef.current || isScrolling || filteredProducts.length === 0) return;
 
     const container = scrollRef.current;
+    // Use container height instead of window.innerHeight for accuracy on mobile
+    const height = container.clientHeight;
     const scrollPosition = container.scrollTop;
-    const height = window.innerHeight;
+
+    // Use round to find nearest index, but be tolerant
     const index = Math.round(scrollPosition / height);
 
     // Handle infinite loop wrapping - only after snap completes
@@ -34,8 +37,12 @@ const HomePage = () => {
       // Scrolled UP to cloned last product, jump to real last
       setIsScrolling(true);
       container.classList.remove('scroll-smooth');
+
+      // Calculate target exactly
+      const targetScroll = height * filteredProducts.length;
+
       requestAnimationFrame(() => {
-        container.scrollTop = height * filteredProducts.length;
+        container.scrollTop = targetScroll;
         requestAnimationFrame(() => {
           container.classList.add('scroll-smooth');
           setIsScrolling(false);
@@ -45,8 +52,12 @@ const HomePage = () => {
       // Scrolled DOWN to cloned first product, jump to real first
       setIsScrolling(true);
       container.classList.remove('scroll-smooth');
+
+      // Target is the first real product (index 1)
+      const targetScroll = height;
+
       requestAnimationFrame(() => {
-        container.scrollTop = height;
+        container.scrollTop = targetScroll;
         requestAnimationFrame(() => {
           container.classList.add('scroll-smooth');
           setIsScrolling(false);
@@ -58,12 +69,14 @@ const HomePage = () => {
   // Initialize scroll position and reset when category changes
   useEffect(() => {
     if (scrollRef.current && filteredProducts.length > 0) {
-      scrollRef.current.scrollTop = window.innerHeight;
+      // Set initial scroll to the first real item (Index 1)
+      // Use clientHeight to be safe
+      scrollRef.current.scrollTop = scrollRef.current.clientHeight;
     }
   }, [activeCategory, filteredProducts.length]);
 
   return (
-    <div className="relative h-screen w-full bg-black text-white font-sans overflow-hidden">
+    <div className="relative h-[100dvh] w-full bg-black text-white font-sans overflow-hidden">
 
       {/* Top Header - Floating */}
       <div className="absolute top-0 left-0 w-full z-50 flex flex-col items-center pt-4 pb-8 bg-gradient-to-b from-black/60 to-transparent pointer-events-none">
@@ -114,12 +127,12 @@ const HomePage = () => {
       <main
         ref={scrollRef}
         onScrollEnd={handleScrollEnd}
-        className="h-screen w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar"
+        className="h-[100dvh] w-full overflow-y-scroll snap-y snap-mandatory scroll-smooth no-scrollbar touch-pan-y"
       >
         {loopedProducts.length > 0 ? loopedProducts.map((product, idx) => (
           <section
             key={`${product.id}-${idx}`}
-            className="relative w-full h-screen snap-start shrink-0"
+            className="relative w-full h-[100dvh] snap-start shrink-0"
           >
             {/* Background Image - using first image from the array */}
             <div className="absolute inset-0">
@@ -159,7 +172,7 @@ const HomePage = () => {
             </div>
           </section>
         )) : (
-          <div className="h-screen w-full flex items-center justify-center bg-gray-900">
+          <div className="h-[100dvh] w-full flex items-center justify-center bg-gray-900">
             <p className="text-gray-400">No products found in this category.</p>
           </div>
         )}

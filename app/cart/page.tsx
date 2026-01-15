@@ -5,10 +5,10 @@ import Link from 'next/link';
 
 const CartPage = () => {
     return (
-        <div className="relative h-screen w-full bg-gray-50 text-black font-sans overflow-hidden flex flex-col">
+        <div className="relative h-[100dvh] w-full bg-gray-50 text-black font-sans overflow-hidden flex flex-col">
 
             {/* Top Header */}
-            <div className="flex w-full bg-white z-50 pt-4 pb-4 px-6 items-center justify-between shadow-sm">
+            <div className="flex w-full bg-white z-50 pt-4 pb-4 px-6 items-center justify-between shadow-sm shrink-0">
                 <span className="text-lg font-medium text-gray-900">Shopping Bag</span>
                 <div className="flex gap-5">
                     <Link href="/notification">
