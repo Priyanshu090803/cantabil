@@ -14,7 +14,7 @@ export const PRODUCTS = [
     {
         id: 1,
         category: "MEN",
-        title: "Classic Beige Knit Sweater",
+        title: "Classic Beige Sweater",
         description: "Soft, premium knitted wool sweater perfect for winter layering.",
         price: "₹ 990.00",
         originalPrice: "₹ 1490.00",
@@ -32,7 +32,7 @@ export const PRODUCTS = [
     {
         id: 3,
         category: "MEN",
-        title: "Tailored Linen Shirt",
+        title: "Linen Shirt",
         description: "Breathable linen fabric for a sharp, casual summer look.",
         price: "₹ 1850.00",
         originalPrice: "₹ 2500.00",
@@ -50,7 +50,7 @@ export const PRODUCTS = [
     {
         id: 5,
         category: "MEN",
-        title: "Smart Casual Blazer",
+        title: "Smart Blazer",
         description: "Versatile blazer that transitions effortlessly from work to evening.",
         price: "₹ 5500.00",
         originalPrice: "₹ 7999.00",
@@ -61,8 +61,8 @@ export const PRODUCTS = [
     {
         id: 6,
         category: "WOMEN",
-        title: "Elegant Silk Evening Dress",
-        description: "Flowing silk dress designed for sophistication and grace.",
+        title: "V neck long kurti",
+        description: "Indian ethnic wear for women.",
         price: "₹ 4200.00",
         originalPrice: "₹ 5600.00",
         images: getImages(IMAGES.WOMEN, 0)
@@ -97,8 +97,8 @@ export const PRODUCTS = [
     {
         id: 10,
         category: "WOMEN",
-        title: "Statement Leather Handbag",
-        description: "A bold accessory to complete any outfit with elegance.",
+        title: "Sweater for Women",
+        description: "Winter Wear Knitted Fabric Round Neck Regular Fit Printed Pattern",
         price: "₹ 3800.00",
         originalPrice: "₹ 5000.00",
         images: getImages(IMAGES.WOMEN, 4)
@@ -117,8 +117,8 @@ export const PRODUCTS = [
     {
         id: 12,
         category: "KIDS",
-        title: "Durable Denim Overalls",
-        description: "Sturdy and cute overalls built for active playtime adventures.",
+        title: "Durable Denim Jeans",
+        description: "Sturdy and cute Jeans built for active playtime adventures.",
         price: "₹ 1450.00",
         originalPrice: "₹ 1999.00",
         images: getImages(IMAGES.KIDS, 1)

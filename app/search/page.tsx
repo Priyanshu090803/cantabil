@@ -27,8 +27,8 @@ const SearchPage = () => {
                 </div>
 
                 {/* Tabs */}
-                <div className="flex justify-center w-full">
-                    <div className="flex gap-8 text-xs font-medium tracking-wide">
+                <div className="flex justify-center w-full mt-4">
+                    <div className="flex gap-12 text-xs font-medium tracking-wide">
                         {Object.keys(SEARCH_DATA).map((tab) => (
                             <button
                                 key={tab}
